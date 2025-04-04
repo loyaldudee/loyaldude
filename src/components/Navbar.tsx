@@ -1,28 +1,27 @@
 "use client";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
-  const linkClasses = (path: string) =>
-    `hover:underline ${
-      pathname === path ? "text-yellow-400 font-semibold" : "text-white"
-    }`;
-
   return (
-    <nav className="bg-gray-800 p-4 flex justify-between items-center shadow-md">
-      <Link href="/" className="text-2xl font-bold text-white">
+    <nav className="bg-gray-800 p-4 text-white flex justify-between items-center shadow-md">
+      <Link href="/" className="text-xl font-bold hover:text-purple-400 transition-colors">
         Mayur Rishi
       </Link>
-      <div className="space-x-6">
-        <Link href="/" className={linkClasses("/")}>
+
+      <div className="space-x-6 text-sm sm:text-base">
+        <Link href="/" className="hover:text-purple-400 transition-colors">
           Home
         </Link>
-        <Link href="/projects" className={linkClasses("/projects")}>
+        <Link href="/projects" className="hover:text-purple-400 transition-colors">
           Projects
         </Link>
-        {/* <Link href="/about" className={linkClasses("/about")}>About</Link> */}
+        <Link href="/about" className="hover:text-purple-400 transition-colors">
+          About
+        </Link>
+        <Link href="/contact" className="hover:text-purple-400 transition-colors">
+          Contact
+        </Link>
       </div>
     </nav>
   );
