@@ -1,18 +1,29 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+export default function Navbar() {
+  const pathname = usePathname();
+
+  const linkClasses = (path: string) =>
+    `hover:underline ${
+      pathname === path ? "text-yellow-400 font-semibold" : "text-white"
+    }`;
+
   return (
-    <nav className="bg-gray-900 text-white py-4 px-6 flex justify-between items-center">
-      <h1 className="text-xl font-bold">Mayur Rishi</h1>
-      <div className="space-x-4">
-        <Link href="/" className="hover:text-gray-400">Home</Link>
-        <Link href="/projects" className="hover:text-gray-400">Projects</Link>
-        <Link href="/about" className="hover:text-gray-400">About</Link>
-        <Link href="/contact" className="hover:text-gray-400">Contact</Link>
+    <nav className="bg-gray-800 p-4 flex justify-between items-center shadow-md">
+      <Link href="/" className="text-2xl font-bold text-white">
+        Mayur Rishi
+      </Link>
+      <div className="space-x-6">
+        <Link href="/" className={linkClasses("/")}>
+          Home
+        </Link>
+        <Link href="/projects" className={linkClasses("/projects")}>
+          Projects
+        </Link>
+        {/* <Link href="/about" className={linkClasses("/about")}>About</Link> */}
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
