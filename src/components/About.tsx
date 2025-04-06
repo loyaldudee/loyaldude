@@ -1,0 +1,158 @@
+'use client';
+
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
+export default function About() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const Section = ({ children }: { children: React.ReactNode }) => {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
+
+    return (
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        {children}
+      </motion.section>
+    );
+  };
+
+  return (
+    <div id="about" className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white scroll-mt-20">
+      <Navbar />
+      <main className="max-w-6xl mx-auto px-6 py-24 space-y-24">
+
+        {/* Intro Header */}
+        <Section>
+          <div className="text-center">
+            <h1 className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              About Me <span className="inline-block animate-bounce">👨‍💻</span>
+            </h1>
+          </div>
+        </Section>
+
+        {/* Bio and Image Section */}
+        <Section>
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-16">
+            <div className="relative group shrink-0">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-75 blur-sm group-hover:opacity-100 transition" />
+              <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-purple-500 shadow-md shadow-purple-500/40 hover:shadow-purple-500/60 transition">
+                <Image src="/profile.jpg" alt="Mayur Rishi" fill className="object-cover" priority />
+              </div>
+            </div>
+
+            <div className="flex-1 text-lg text-gray-200 space-y-6">
+              <p>
+                Hey, I'm <span className="font-semibold text-purple-400">Mayur Rishi</span>, a passionate <span className="text-blue-400">Game & VR Developer</span> specializing in Unity, C#, and React Native. I thrive on crafting immersive digital worlds and redefining <strong className="text-purple-300">Virtual Reality</strong> experiences.
+              </p>
+              <p>
+                From building <strong className="text-blue-300">VR projects</strong> and mobile apps to designing interactive simulations, my journey has been a blend of creativity and code. I'm currently working on the <strong className="text-purple-300">VR Herbal Garden</strong> — a meditative space where users can explore the healing wonders of medicinal plants.
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        {/* Skills Section */}
+        <Section>
+          <h2 className="text-3xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+            Skills & Tools <span className="animate-pulse">🚀</span>
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {[
+              "C#", "MERN (JavaScript)", "C++",
+              "Unity3D", "Unity VR", "GameMaker Studio",
+              "Blender", "Git", "GitHub",
+              "Android Studio", "MongoDB", "AWS"
+            ].map((skill, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05, duration: 0.3 }}
+                className="rounded-lg px-4 py-3 text-center text-sm font-medium text-gray-200 border border-gray-700 bg-gradient-to-br from-gray-800 to-gray-900 hover:from-purple-700 hover:to-blue-700 hover:scale-105 transform transition-all duration-300 ease-in-out"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+        {/* CTA Buttons */}
+        <Section>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link
+              href="https://drive.google.com/uc?export=download&id=1Z2JT4rWEwnCPtlhQZPhSglwTNKokfxoi"
+              className="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:from-purple-700 hover:to-purple-800 hover:shadow-purple-500/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+            >
+              📄 Download Resume
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-800 hover:shadow-blue-500/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+            >
+              📩 Contact Me
+            </Link>
+          </div>
+        </Section>
+
+        {/* Experience Section */}
+        <Section>
+          <h2 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+            Experience <span className="inline-block animate-bounce">💼</span>
+          </h2>
+
+          <div className="space-y-12">
+            {[
+              {
+                company: "Front Benchers Infotech Limited",
+                role: "App Developer Intern",
+                duration: "March 2024 – September 2024",
+                description: "Built three apps: two immersive Unity 3D experiences and a feature-rich cross-platform React Native mobile app.",
+                color: "purple"
+              },
+              {
+                company: "IDZ Digital",
+                role: "Game Developer Intern",
+                duration: "Jan 2025 – Present",
+                description: "Prototyping engaging PC and VR games, fine-tuning mechanics, and delivering experiences that merge creativity with innovation.",
+                color: "blue"
+              }
+            ].map((exp, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.2 }}
+                className={`rounded-xl p-6 bg-gradient-to-br from-gray-800 to-gray-900 border border-${exp.color}-600/30 hover:border-${exp.color}-500/50 hover:shadow-${exp.color}-500/20 shadow-md transition-all duration-300`}
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">{exp.company}</h3>
+                    <p className="text-gray-400 italic">{exp.role}</p>
+                  </div>
+                  <div className={`px-4 py-2 text-sm rounded-full bg-${exp.color}-900/30 text-${exp.color}-300`}>
+                    {exp.duration}
+                  </div>
+                </div>
+                <p className="mt-4 text-gray-300 leading-relaxed">{exp.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+      </main>
+    </div>
+  );
+}
