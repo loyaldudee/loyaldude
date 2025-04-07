@@ -8,7 +8,6 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import ParticlesBackground from "@/components/ParticlesBackground";
-import FloatyImages from "@/components/FloatyImages"; // ✅ Importing new component
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,12 +17,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-900 text-gray-100 scroll-smooth overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#222831] via-[#222831] to-[#222831] text-[#EEEEEE] scroll-smooth overflow-hidden">
       {/* === Background Effects === */}
-      <ParticlesBackground className="absolute inset-0 z-0 opacity-30" />
-      
-      {/* ✅ New FloatyImages component replaces old floaty PNG */}
-      <FloatyImages />
+      <ParticlesBackground className="absolute inset-0 z-0 opacity-20" />
 
       {/* === Content Wrapper === */}
       <div className="relative z-10">
@@ -36,11 +32,11 @@ export default function Home() {
         >
           {/* Profile Image */}
           <div
-            className={`relative group mb-10 w-48 h-48 rounded-full overflow-hidden border-4 border-purple-600 shadow-2xl shadow-purple-500/40 hover:shadow-purple-500/60 transition-all duration-700 ${
+            className={`relative group mb-10 w-48 h-48 rounded-full overflow-hidden border-4 border-[#00ADB5] shadow-2xl shadow-[#00ADB5]/40 hover:shadow-[#00ADB5]/60 transition-all duration-700 ${
               isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
             }`}
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 rounded-full opacity-70 blur-md group-hover:opacity-100 group-hover:blur-lg transition duration-700" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#00ADB5] via-[#EEEEEE] to-[#00ADB5] rounded-full opacity-70 blur-md group-hover:opacity-100 group-hover:blur-lg transition duration-700" />
             <div className="relative rounded-full overflow-hidden h-full w-full z-10">
               <Image 
                 src="/profile.jpg" 
@@ -58,7 +54,7 @@ export default function Home() {
               isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 animate-gradient-x">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EEEEEE] via-[#00ADB5] to-[#EEEEEE] animate-gradient-x">
               Hey, I'm Mayur
             </span>
             <span className="inline-block animate-wave ml-3" role="img" aria-label="Waving Hand">
@@ -68,20 +64,20 @@ export default function Home() {
 
           {/* One-liner */}
           <p
-            className={`text-xl text-gray-300 max-w-2xl mb-4 leading-relaxed transition-all duration-700 delay-300 ${
+            className={`text-xl text-[#EEEEEE] max-w-2xl mb-4 leading-relaxed transition-all duration-700 delay-300 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            I build <span className="text-purple-400 font-semibold">immersive experiences</span> that blend code, creativity, and storytelling.
+            I build <span className="text-[#00ADB5] font-semibold">immersive experiences</span> that blend code, creativity, and storytelling.
           </p>
 
           {/* Bio */}
           <p
-            className={`text-lg text-gray-400 max-w-2xl transition-all duration-700 delay-500 ${
+            className={`text-lg text-[#EEEEEE] max-w-2xl transition-all duration-700 delay-500 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            As a <span className="text-blue-400 font-semibold">Game & VR Developer</span>, I turn wild ideas into playable realities—crafting virtual worlds that spark curiosity and connection.
+            As a <span className="text-[#00ADB5] font-semibold">Game & VR Developer</span>, I turn wild ideas into playable realities—crafting virtual worlds that spark curiosity and connection.
           </p>
 
           {/* Tech Stack */}
@@ -93,7 +89,7 @@ export default function Home() {
             {['Unity', 'VR', 'C#', 'React'].map((tech, index) => (
               <span
                 key={tech}
-                className="px-4 py-1.5 bg-purple-900/50 rounded-full text-sm border border-purple-500/30 text-purple-300 backdrop-blur-md shadow-inner"
+                className="px-4 py-1.5 bg-[#00ADB5]/30 rounded-full text-sm border border-[#00ADB5]/50 text-[#EEEEEE] backdrop-blur-md shadow-inner"
                 style={{
                   animationDelay: `${index * 100}ms`,
                   animation: isLoaded ? 'fadeIn 600ms ease-out forwards' : 'none',
@@ -111,12 +107,12 @@ export default function Home() {
             }`}
           >
             <a href="#projects">
-              <button className="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-3 rounded-xl text-white font-medium shadow-md hover:shadow-purple-500/50 hover:translate-y-[-2px] transition-all duration-300">
+              <button className="bg-gradient-to-r from-[#00ADB5] to-[#EEEEEE] px-8 py-3 rounded-xl text-[#222831] font-medium shadow-md hover:shadow-[#00ADB5]/50 hover:translate-y-[-2px] transition-all duration-300">
                 🚀 Explore Projects
               </button>
             </a>
             <a href="#contact">
-              <button className="bg-gray-900 border-2 border-purple-600 hover:border-purple-400 px-8 py-3 rounded-xl text-white font-medium shadow-md hover:shadow-purple-500/20 hover:translate-y-[-2px] transition-all duration-300">
+              <button className="bg-[#393E46] border-2 border-[#00ADB5] hover:border-[#EEEEEE] px-8 py-3 rounded-xl text-[#EEEEEE] font-medium shadow-md hover:shadow-[#00ADB5]/20 hover:translate-y-[-2px] transition-all duration-300">
                 💬 Let's Talk
               </button>
             </a>
@@ -134,7 +130,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 px-6 bg-gray-950">
+        <section id="contact" className="py-32 px-6 bg-[#222831]">
           <Contact />
         </section>
       </div>

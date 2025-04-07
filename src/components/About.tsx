@@ -30,14 +30,14 @@ export default function About() {
   };
 
   return (
-    <div id="about" className="min-h-screen text-white scroll-mt-20">
+    <div id="about" className="min-h-screen bg-[#222831] text-[#EEEEEE] scroll-mt-20">
       <Navbar />
       <main className="max-w-6xl mx-auto px-6 py-24 space-y-24">
 
         {/* Intro Header */}
         <Section>
           <div className="text-center">
-            <h1 className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <h1 className={`text-5xl font-bold text-[#00ADB5] transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
               About Me <span className="inline-block animate-bounce">👨‍💻</span>
             </h1>
           </div>
@@ -47,18 +47,18 @@ export default function About() {
         <Section>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-16">
             <div className="relative group shrink-0">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-75 blur-sm group-hover:opacity-100 transition" />
-              <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-purple-500 shadow-md shadow-purple-500/40 hover:shadow-purple-500/60 transition">
+              <div className="absolute -inset-0.5 bg-[#00ADB5] rounded-full opacity-75 blur-sm group-hover:opacity-100 transition" />
+              <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-[#00ADB5] shadow-md shadow-[#00ADB5]/40 hover:shadow-[#00ADB5]/60 transition">
                 <Image src="/profile.jpg" alt="Mayur Rishi" fill className="object-cover" priority />
               </div>
             </div>
 
-            <div className="flex-1 text-lg text-gray-200 space-y-6">
+            <div className="flex-1 text-lg text-[#EEEEEE] space-y-6">
               <p>
-                Hey, I'm <span className="font-semibold text-purple-400">Mayur Rishi</span>, a passionate <span className="text-blue-400">Game & VR Developer</span> specializing in Unity, C#, and React Native. I thrive on crafting immersive digital worlds and redefining <strong className="text-purple-300">Virtual Reality</strong> experiences.
+                Hey, I'm <span className="font-semibold text-[#00ADB5]">Mayur Rishi</span>, a passionate <span className="text-[#00ADB5]">Game & VR Developer</span> specializing in Unity, C#, and React Native. I thrive on crafting immersive digital worlds and redefining <strong className="text-[#00ADB5]">Virtual Reality</strong> experiences.
               </p>
               <p>
-                From building <strong className="text-blue-300">VR projects</strong> and mobile apps to designing interactive simulations, my journey has been a blend of creativity and code. I'm currently working on the <strong className="text-purple-300">VR Herbal Garden</strong> — a meditative space where users can explore the healing wonders of medicinal plants.
+                From building <strong className="text-[#00ADB5]">VR projects</strong> and mobile apps to designing interactive simulations, my journey has been a blend of creativity and code. I'm currently working on the <strong className="text-[#00ADB5]">VR Herbal Garden</strong> — a meditative space where users can explore the healing wonders of medicinal plants.
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function About() {
 
         {/* Skills Section */}
         <Section>
-          <h2 className="text-3xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+          <h2 className="text-3xl font-bold text-center mb-10 text-[#00ADB5]">
             Skills & Tools <span className="animate-pulse">🚀</span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -81,7 +81,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.05, duration: 0.3 }}
-                className="rounded-lg px-4 py-3 text-center text-sm font-medium text-gray-200 border border-gray-700 bg-gradient-to-br from-gray-800 to-gray-900 hover:from-purple-700 hover:to-blue-700 hover:scale-105 transform transition-all duration-300 ease-in-out"
+                className="rounded-lg px-4 py-3 text-center text-sm font-medium border border-[#393E46] bg-[#393E46] hover:bg-[#00ADB5] hover:text-[#222831] hover:scale-105 transform transition-all duration-300 ease-in-out"
               >
                 {skill}
               </motion.div>
@@ -94,13 +94,13 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="https://drive.google.com/uc?export=download&id=1Z2JT4rWEwnCPtlhQZPhSglwTNKokfxoi"
-              className="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:from-purple-700 hover:to-purple-800 hover:shadow-purple-500/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+              className="bg-[#00ADB5] px-6 py-3 rounded-lg font-semibold text-[#222831] shadow-md hover:bg-[#00bbc4] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
             >
               📄 Download Resume
             </Link>
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-800 hover:shadow-blue-500/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+              className="bg-[#393E46] px-6 py-3 rounded-lg font-semibold text-[#EEEEEE] shadow-md hover:bg-[#00ADB5] hover:text-[#222831] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
             >
               📩 Contact Me
             </Link>
@@ -109,7 +109,7 @@ export default function About() {
 
         {/* Experience Section */}
         <Section>
-          <h2 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#00ADB5]">
             Experience <span className="inline-block animate-bounce">💼</span>
           </h2>
 
@@ -119,15 +119,13 @@ export default function About() {
                 company: "Front Benchers Infotech Limited",
                 role: "App Developer Intern",
                 duration: "March 2024 – September 2024",
-                description: "Built three apps: two immersive Unity 3D experiences and a feature-rich cross-platform React Native mobile app.",
-                color: "purple"
+                description: "Built three apps: two immersive Unity 3D experiences and a feature-rich cross-platform React Native mobile app."
               },
               {
                 company: "IDZ Digital",
                 role: "Game Developer Intern",
                 duration: "Jan 2025 – Present",
-                description: "Prototyping engaging PC and VR games, fine-tuning mechanics, and delivering experiences that merge creativity with innovation.",
-                color: "blue"
+                description: "Prototyping engaging PC and VR games, fine-tuning mechanics, and delivering experiences that merge creativity with innovation."
               }
             ].map((exp, idx) => (
               <motion.div
@@ -136,22 +134,18 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.2 }}
-                className={`
-                  rounded-xl p-6 bg-gradient-to-br from-gray-800 to-gray-900 border border-${exp.color}-600/30 
-                  shadow-md transition-all duration-300
-                  hover:scale-105 hover:shadow-${exp.color}-500/40 hover:border-${exp.color}-400/70
-                `}
+                className="rounded-xl p-6 bg-[#393E46] border border-[#00ADB5]/20 shadow-md hover:scale-105 hover:border-[#00ADB5] hover:shadow-[#00ADB5]/30 transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{exp.company}</h3>
-                    <p className="text-gray-400 italic">{exp.role}</p>
+                    <h3 className="text-2xl font-bold text-[#EEEEEE]">{exp.company}</h3>
+                    <p className="text-[#CCCCCC] italic">{exp.role}</p>
                   </div>
-                  <div className={`px-4 py-2 text-sm rounded-full bg-${exp.color}-900/30 text-${exp.color}-300`}>
+                  <div className="px-4 py-2 text-sm rounded-full bg-[#00ADB5]/10 text-[#00ADB5]">
                     {exp.duration}
                   </div>
                 </div>
-                <p className="mt-4 text-gray-300 leading-relaxed">{exp.description}</p>
+                <p className="mt-4 text-[#DDDDDD] leading-relaxed">{exp.description}</p>
               </motion.div>
             ))}
           </div>

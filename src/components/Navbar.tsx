@@ -6,10 +6,13 @@ import Link from "next/link";
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Handle closing sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (sidebarOpen && !event.target.closest(".sidebar") && !event.target.closest(".menu-button")) {
+      if (
+        sidebarOpen &&
+        !event.target.closest(".sidebar") &&
+        !event.target.closest(".menu-button")
+      ) {
         setSidebarOpen(false);
       }
     };
@@ -36,27 +39,26 @@ export default function Navbar() {
       </div>
 
       {/* Sidebar */}
-      <div 
+      <div
         className={`fixed top-0 left-0 h-full w-64 bg-gray-900 text-white z-50 transition-transform duration-300 ease-in-out sidebar ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Header with icon and name */}
+        {/* Header with profile image and name */}
         <div className="flex items-center justify-between px-4 py-4">
           <div className="flex items-center">
-            <div className="flex justify-center items-center relative">
-              <span className="w-10 h-10 bg-indigo-600 rounded-full absolute"></span>
-              <button className="w-10 h-10 rounded-full border border-white/20 relative z-10 flex items-center justify-center">
-                <div className="w-6 flex flex-col gap-1.5">
-                  <span className="w-full h-0.5 bg-white block"></span>
-                  <span className="w-full h-0.5 bg-white block"></span>
-                  <span className="w-full h-0.5 bg-white block"></span>
-                </div>
-              </button>
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500 shadow-[0_0_10px_2px_rgba(168,85,247,0.7)]">
+              <img
+                src="/profile.jpg"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="text-indigo-400 font-bold text-xl ml-3">Mayur Rishi</span>
+            <span className="text-indigo-400 font-bold text-xl ml-3">
+              Mayur Rishi
+            </span>
           </div>
-          <button 
+          <button
             onClick={() => setSidebarOpen(false)}
             className="text-white"
             aria-label="Close navigation menu"
@@ -98,14 +100,12 @@ export default function Navbar() {
             <Mail size={20} className="mr-3" />
             <span className="font-medium">Contact</span>
           </Link>
-
-         
         </div>
       </div>
 
       {/* Overlay */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
