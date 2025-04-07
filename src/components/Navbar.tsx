@@ -99,15 +99,7 @@ export default function Navbar() {
             <span className="font-medium">Contact</span>
           </Link>
 
-          <div className="pt-4"></div>
-
-          <Link
-            href="#contact"
-            className="flex items-center py-3 px-4 bg-purple-800 rounded-md"
-          >
-            <Mail size={20} className="mr-3" />
-            <span className="font-medium">Contact</span>
-          </Link>
+         
         </div>
       </div>
 

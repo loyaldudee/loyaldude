@@ -62,7 +62,7 @@ export default function Home() {
               Hey, I'm Mayur
             </span>
             <span className="inline-block animate-wave ml-3" role="img" aria-label="Waving Hand">
-              👋
+              🦚
             </span>
           </h1>
 

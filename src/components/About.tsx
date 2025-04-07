@@ -136,7 +136,11 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.2 }}
-                className={`rounded-xl p-6 bg-gradient-to-br from-gray-800 to-gray-900 border border-${exp.color}-600/30 hover:border-${exp.color}-500/50 hover:shadow-${exp.color}-500/20 shadow-md transition-all duration-300`}
+                className={`
+                  rounded-xl p-6 bg-gradient-to-br from-gray-800 to-gray-900 border border-${exp.color}-600/30 
+                  shadow-md transition-all duration-300
+                  hover:scale-105 hover:shadow-${exp.color}-500/40 hover:border-${exp.color}-400/70
+                `}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                   <div>
