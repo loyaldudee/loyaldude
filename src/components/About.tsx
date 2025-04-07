@@ -30,7 +30,7 @@ export default function About() {
   };
 
   return (
-    <div id="about" className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white scroll-mt-20">
+    <div id="about" className="min-h-screen text-white scroll-mt-20">
       <Navbar />
       <main className="max-w-6xl mx-auto px-6 py-24 space-y-24">
 

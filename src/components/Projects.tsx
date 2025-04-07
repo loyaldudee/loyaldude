@@ -52,15 +52,32 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gray-950 text-white scroll-mt-20 px-6 py-20"
+      className="min-h-screen text-white scroll-mt-20 px-6 py-20 relative"
+      style={{
+        background: 'transparent',
+      }}
     >
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold text-center mb-6 text-purple-400">
-          🚀 Projects
-        </h1>
-        <p className="text-center text-gray-400 mb-12">
-          A showcase of the virtual worlds, tools, and experiences I’ve brought to life.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="inline-block w-full text-center px-6 py-6 mb-12 rounded-2xl bg-black/40 backdrop-blur-md"
+        >
+          <h1 className="text-5xl font-bold text-purple-400 mb-4">
+            🚀 Projects
+          </h1>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-200 text-lg max-w-2xl mx-auto"
+          >
+            A showcase of the virtual worlds, tools, and experiences I’ve brought to life.
+          </motion.p>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {projects.map((project, index) => {
@@ -73,8 +90,8 @@ export default function Projects() {
                 ref={ref}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-purple-600/40 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]"
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <div className="w-full h-48 overflow-hidden">
                   <img
