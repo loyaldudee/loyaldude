@@ -7,11 +7,12 @@ export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
       if (
         sidebarOpen &&
-        !event.target.closest(".sidebar") &&
-        !event.target.closest(".menu-button")
+        !target.closest(".sidebar") &&
+        !target.closest(".menu-button")
       ) {
         setSidebarOpen(false);
       }

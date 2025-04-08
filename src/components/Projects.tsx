@@ -3,7 +3,23 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const projects = [
+// Define the project type
+type Project = {
+  title: string;
+  tech: string;
+  description: string;
+  image: string;
+  repo: string;
+};
+
+type ProjectCardProps = {
+  project: Project;
+  setSelectedImage: (image: string | null) => void;
+  isInView: boolean;
+  index: number;
+};
+
+const projects: Project[] = [
   {
     title: "AIT VR Tour",
     tech: "Unity3D, Blender",
@@ -54,14 +70,14 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project, setSelectedImage, isInView, index }) {
-  const cardRef = useRef(null);
-  const [tiltStyle, setTiltStyle] = useState({
+function ProjectCard({ project, setSelectedImage, isInView, index }: ProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({
     transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
     transition: 'all 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s',
   });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
 
     const card = cardRef.current;
@@ -70,8 +86,8 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const tiltX = (y - centerY) / centerY * -10;
-    const tiltY = (x - centerX) / centerX * 10;
+    const tiltX = ((y - centerY) / centerY) * -10;
+    const tiltY = ((x - centerX) / centerX) * 10;
 
     setTiltStyle({
       transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`,
@@ -140,7 +156,7 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
 }
 
 export default function Projects() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const projectRefs = projects.map(() => useRef(null));
   const projectInViews = projectRefs.map(ref => useInView(ref, { once: true }));
 
