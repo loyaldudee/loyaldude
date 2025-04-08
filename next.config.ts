@@ -1,22 +1,36 @@
-const isGithubPages = process.env.GITHUB_PAGES === 'true';
-const repoName = 'loyaldude';
+import type { NextConfig } from 'next'
 
-const nextConfig = {
+const isGithubPages = process.env.GITHUB_PAGES === 'true'
+const repoName = 'loyaldude' // MUST match your GitHub repo name exactly
+
+const nextConfig: NextConfig = {
+  // Static export for GitHub Pages
   output: isGithubPages ? 'export' : undefined,
+  
+  // Path configuration (critical for GitHub Pages)
   basePath: isGithubPages ? `/${repoName}` : '',
   assetPrefix: isGithubPages ? `/${repoName}/` : '',
-  images: { 
-    unoptimized: true 
+  trailingSlash: true, // Ensures consistent path resolution
+
+  // Image handling (required for static export)
+  images: {
+    unoptimized: true // Disables default Image Optimization API
   },
-  trailingSlash: true,
-  reactStrictMode: true,
 
-  // Correct experimental flags (removed invalid turbo)
-  experimental: {
-    optimizeCss: true, // Note the correct spelling (optimizeCss → optimizeCss)
-    scrollRestoration: true,
-    largePageDataBytes: 256 * 1000,
+  // Environment variables
+  env: {
+    NEXT_PUBLIC_BASE_URL: isGithubPages 
+      ? `https://loyaldudee.github.io/${repoName}`
+      : 'http://localhost:3000',
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? `/${repoName}` : ''
+  },
+
+  // Webpack configuration to handle asset paths
+  webpack: (config) => {
+    // Fixes path issues for static files
+    config.output.publicPath = isGithubPages ? `/${repoName}/` : '/'
+    return config
   }
-};
+}
 
-module.exports = nextConfig;
+export default nextConfig
