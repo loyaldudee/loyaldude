@@ -46,7 +46,7 @@ export default function ParticlesBackground({ className = "" }) {
     ];
 
     // 🔥 Increase particle count here
-    const particles: Particle[] = Array.from({ length: 1500 }, () => {
+    const particles: Particle[] = Array.from({ length: 800 }, () => {
       const { shape, color } = shapeOptions[Math.floor(Math.random() * shapeOptions.length)];
       return {
         x: Math.random() * window.innerWidth,

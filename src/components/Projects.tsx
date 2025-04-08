@@ -94,7 +94,7 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
     >
       <div
         ref={cardRef}
-        className="relative bg-[#393E46]/50 border border-[#00ADB5]/30 rounded-2xl overflow-hidden shadow-md"
+        className="relative bg-[#393E46]/50 border border-[#00ADB5]/30 rounded-2xl overflow-hidden shadow-md min-h-[500px] flex flex-col"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={tiltStyle}
@@ -110,7 +110,7 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
           />
         </div>
 
-        <div className="p-6 flex flex-col gap-3">
+        <div className="p-6 flex flex-col justify-between flex-grow gap-3">
           <div>
             <h2 className="text-2xl font-semibold text-[#00ADB5] mb-1">
               {project.title}
