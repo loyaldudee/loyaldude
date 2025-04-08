@@ -54,7 +54,6 @@ const projects = [
   },
 ];
 
-// Separate component for the tilt card effect
 function ProjectCard({ project, setSelectedImage, isInView, index }) {
   const cardRef = useRef(null);
   const [tiltStyle, setTiltStyle] = useState({
@@ -64,23 +63,16 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
-    
+
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
-    
-    // Calculate cursor position relative to the card
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
-    // Calculate the tilt amount based on cursor position
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
-    // Adjust these values to control the tilt intensity
-    const tiltX = (y - centerY) / centerY * -10; // Inverted for natural feel
+    const tiltX = (y - centerY) / centerY * -10;
     const tiltY = (x - centerX) / centerX * 10;
-    
-    // Apply the tilt effect
+
     setTiltStyle({
       transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`,
       transition: 'all 0.1s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s',
@@ -88,7 +80,6 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
   };
 
   const handleMouseLeave = () => {
-    // Reset the tilt when the mouse leaves
     setTiltStyle({
       transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
       transition: 'all 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s',
@@ -103,7 +94,7 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
     >
       <div
         ref={cardRef}
-        className="relative bg-[#393E46] border border-[#00ADB5]/30 rounded-2xl overflow-hidden shadow-md"
+        className="relative bg-[#393E46]/50 border border-[#00ADB5]/30 rounded-2xl overflow-hidden shadow-md"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={tiltStyle}
@@ -150,15 +141,13 @@ function ProjectCard({ project, setSelectedImage, isInView, index }) {
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState(null);
-  
-  // Create refs and inView states outside of the render loop
   const projectRefs = projects.map(() => useRef(null));
   const projectInViews = projectRefs.map(ref => useInView(ref, { once: true }));
 
   return (
     <section
       id="projects"
-      className="min-h-screen scroll-mt-20 px-6 py-20 bg-[#222831] text-[#EEEEEE] relative"
+      className="min-h-screen scroll-mt-20 px-6 py-20 text-[#EEEEEE] relative"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -166,7 +155,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="inline-block w-full text-center px-6 py-6 mb-12 rounded-2xl bg-[#393E46]/60 backdrop-blur-md shadow-md"
+          className="inline-block w-full text-center px-6 py-6 mb-12 rounded-2xl backdrop-blur-md shadow-md"
         >
           <h1 className="text-5xl font-bold text-[#00ADB5] mb-4">🚀 Projects</h1>
           <motion.p
@@ -183,9 +172,9 @@ export default function Projects() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {projects.map((project, index) => (
             <div key={index} ref={projectRefs[index]}>
-              <ProjectCard 
-                project={project} 
-                setSelectedImage={setSelectedImage} 
+              <ProjectCard
+                project={project}
+                setSelectedImage={setSelectedImage}
                 isInView={projectInViews[index]}
                 index={index}
               />
@@ -194,7 +183,6 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Fullscreen Image Modal */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center">
           <button

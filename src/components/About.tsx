@@ -30,7 +30,7 @@ export default function About() {
   };
 
   return (
-    <div id="about" className="min-h-screen bg-[#222831] text-[#EEEEEE] scroll-mt-20">
+    <div id="about" className="min-h-screen bg-transparent text-[#EEEEEE] scroll-mt-20">
       <Navbar />
       <main className="max-w-6xl mx-auto px-6 py-24 space-y-24">
 
@@ -81,7 +81,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.05, duration: 0.3 }}
-                className="rounded-lg px-4 py-3 text-center text-sm font-medium border border-[#393E46] bg-[#393E46] hover:bg-[#00ADB5] hover:text-[#222831] hover:scale-105 transform transition-all duration-300 ease-in-out"
+                className="rounded-lg px-4 py-3 text-center text-sm font-medium border border-[#393E46]/50 bg-[#393E46]/60 backdrop-blur-md hover:bg-[#00ADB5] hover:text-[#222831] hover:scale-105 transform transition-all duration-300 ease-in-out"
               >
                 {skill}
               </motion.div>
@@ -94,13 +94,13 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="https://drive.google.com/uc?export=download&id=1Z2JT4rWEwnCPtlhQZPhSglwTNKokfxoi"
-              className="bg-[#00ADB5] px-6 py-3 rounded-lg font-semibold text-[#222831] shadow-md hover:bg-[#00bbc4] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+              className="bg-[#00ADB5]/90 backdrop-blur-md px-6 py-3 rounded-lg font-semibold text-[#222831] shadow-md hover:bg-[#00bbc4] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
             >
               📄 Download Resume
             </Link>
             <Link
               href="/contact"
-              className="bg-[#393E46] px-6 py-3 rounded-lg font-semibold text-[#EEEEEE] shadow-md hover:bg-[#00ADB5] hover:text-[#222831] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+              className="bg-[#393E46]/70 backdrop-blur-md px-6 py-3 rounded-lg font-semibold text-[#EEEEEE] shadow-md hover:bg-[#00ADB5] hover:text-[#222831] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
             >
               📩 Contact Me
             </Link>
@@ -134,7 +134,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.2 }}
-                className="rounded-xl p-6 bg-[#393E46] border border-[#00ADB5]/20 shadow-md hover:scale-105 hover:border-[#00ADB5] hover:shadow-[#00ADB5]/30 transition-all duration-300"
+                className="rounded-xl p-6 bg-[#393E46]/60 backdrop-blur-md border border-[#00ADB5]/20 shadow-md hover:scale-105 hover:border-[#00ADB5] hover:shadow-[#00ADB5]/30 transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                   <div>
