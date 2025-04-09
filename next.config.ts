@@ -1,34 +1,39 @@
 import type { NextConfig } from 'next'
 
 const isGithubPages = process.env.GITHUB_PAGES === 'true'
+const isVercel = process.env.VERCEL === '1'
 const repoName = 'loyaldude' // MUST match your GitHub repo name exactly
 
 const nextConfig: NextConfig = {
   // Static export for GitHub Pages
   output: isGithubPages ? 'export' : undefined,
-  
-  // Path configuration (critical for GitHub Pages)
+
+  // Path config for GitHub Pages only
   basePath: isGithubPages ? `/${repoName}` : '',
   assetPrefix: isGithubPages ? `/${repoName}/` : '',
-  trailingSlash: true, // Ensures consistent path resolution
 
-  // Image handling (required for static export)
+  trailingSlash: true,
+
   images: {
-    unoptimized: true // Disables default Image Optimization API
+    unoptimized: true
   },
 
-  // Environment variables
   env: {
-    NEXT_PUBLIC_BASE_URL: isGithubPages 
+    NEXT_PUBLIC_BASE_URL: isGithubPages
       ? `https://loyaldudee.github.io/${repoName}`
-      : 'http://localhost:3000',
+      : isVercel
+        ? 'https://loyaldude.vercel.app'
+        : 'http://localhost:3000',
+
     NEXT_PUBLIC_BASE_PATH: isGithubPages ? `/${repoName}` : ''
   },
 
-  // Webpack configuration to handle asset paths
   webpack: (config) => {
-    // Fixes path issues for static files
-    config.output.publicPath = isGithubPages ? `/${repoName}/` : '/'
+    // GitHub Pages requires custom publicPath, Vercel should not touch it
+    if (isGithubPages) {
+      config.output.publicPath = `/${repoName}/`
+    }
+
     return config
   }
 }
