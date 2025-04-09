@@ -3,7 +3,7 @@
     "trailingSlash": true,
     "builds": [
       {
-        "src": "next.config.ts",
+        "src": "package.json",
         "use": "@vercel/next"
       }
     ]
