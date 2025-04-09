@@ -37,7 +37,7 @@ export default function Contact() {
         {
           user_name: form.user_name,
           user_email: form.user_email,
-          subject: "New message from portfolio", // hardcoded subject
+          subject: "New message from portfolio",
           message: form.message,
         },
         'F-NoV-nFVisKe3pkV'
@@ -141,6 +141,46 @@ export default function Contact() {
               {success}
             </p>
           )}
+
+          {/* Social Links */}
+          <div className="flex justify-center items-center gap-10 mt-8">
+            <a
+              href="https://github.com/loyaldudee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-110 hover:drop-shadow-[0_0_8px_#ffffff] flex items-center justify-center w-16 h-16"
+            >
+              <img
+                src="/github-mark-white.png"
+                alt="GitHub"
+                className="w-8 h-8"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mayur-rishi-420601252/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-110 hover:drop-shadow-[0_0_8px_#00aaff] flex items-center justify-center w-16 h-16"
+            >
+              <img
+                src="/linkedin.png"
+                alt="LinkedIn"
+                className="w-12 h-12 rounded-full"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/mayurrishi_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-110 hover:drop-shadow-[0_0_8px_#ff0080] flex items-center justify-center w-16 h-16"
+            >
+              <img
+                src="/instagram.jpg"
+                alt="Instagram"
+                className="w-16 h-16 rounded-full"
+              />
+            </a>
+          </div>
         </form>
       </main>
     </motion.div>
