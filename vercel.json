@@ -6,12 +6,6 @@
         "src": "next.config.ts",
         "use": "@vercel/next"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/$1"
-      }
     ]
   }
   
