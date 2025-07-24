@@ -98,12 +98,18 @@ export default function About() {
             >
               📄 Download Resume
             </Link>
-            <Link
-              href="/contact"
-              className="bg-[#393E46]/70 backdrop-blur-md px-6 py-3 rounded-lg font-semibold text-[#EEEEEE] shadow-md hover:bg-[#00ADB5] hover:text-[#222831] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
-            >
-              📩 Contact Me
-            </Link>
+            <button
+            onClick={() => {
+              window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth',
+              });
+            }}
+            className="bg-[#393E46]/70 backdrop-blur-md px-6 py-3 rounded-lg font-semibold text-[#EEEEEE] shadow-md hover:bg-[#00ADB5] hover:text-[#222831] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+          >
+            📩 Contact Me
+          </button>
+
           </div>
         </Section>
 
@@ -130,7 +136,7 @@ export default function About() {
               {
                 company: "Solytics Partners",
                 role: "QA Intern",
-                duration: "May 2025 – Present",
+                duration: "Apr 2025 – Present",
                 description: "Working on a product called Model Risk Management (MRM) Vault as a QA intern, also learning about automated testing"
               }
             ].map((exp, idx) => (
@@ -156,6 +162,12 @@ export default function About() {
             ))}
           </div>
         </Section>
+
+        {/* 👇 This is the existing bottom section 👇 */}
+        <div id="bottom">
+          {/* Whatever content is already at the bottom (like your contact form/info) should stay right here. */}
+        </div>
+
       </main>
     </div>
   );
