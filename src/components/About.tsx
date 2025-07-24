@@ -123,9 +123,15 @@ export default function About() {
               },
               {
                 company: "IDZ Digital",
-                role: "Game Developer Intern",
+                role: "Game Developer",
                 duration: "Jan 2025 – Present",
                 description: "Prototyping engaging PC and VR games, fine-tuning mechanics, and delivering experiences that merge creativity with innovation."
+              },
+              {
+                company: "Solytics Partners",
+                role: "QA Intern",
+                duration: "May 2025 – Present",
+                description: "Working on a product called Model Risk Management (MRM) Vault as a QA intern, also learning about automated testing"
               }
             ].map((exp, idx) => (
               <motion.div
