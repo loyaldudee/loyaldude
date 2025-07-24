@@ -93,7 +93,7 @@ export default function About() {
         <Section>
           <div className="flex flex-wrap justify-center gap-6">
             <Link
-              href="https://drive.google.com/uc?export=download&id=1Z2JT4rWEwnCPtlhQZPhSglwTNKokfxoi"
+              href="https://drive.google.com/uc?export=download&id=1QxGjfKU-hcrQXpgNQiM1CZkArj1ZKrAS"
               className="bg-[#00ADB5]/90 backdrop-blur-md px-6 py-3 rounded-lg font-semibold text-[#222831] shadow-md hover:bg-[#00bbc4] hover:shadow-[#00ADB5]/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
             >
               📄 Download Resume
