@@ -130,13 +130,13 @@ export default function About() {
               {
                 company: "IDZ Digital",
                 role: "Game Developer",
-                duration: "Jan 2025 – Present",
+                duration: "Jan 2025 – Oct 2025",
                 description: "Prototyping engaging PC and VR games, fine-tuning mechanics, and delivering experiences that merge creativity with innovation."
               },
               {
                 company: "Solytics Partners",
                 role: "QA Intern",
-                duration: "Apr 2025 – Present",
+                duration: "Apr 2025 – Nov 2025",
                 description: "Working on a product called Model Risk Management (MRM) Vault as a QA intern, also learning about automated testing"
               }
             ].map((exp, idx) => (
