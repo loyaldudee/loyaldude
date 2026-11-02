@@ -1,99 +1,174 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ───────── Design tokens ───────── */
+@theme {
+  --color-cream: #fdfbf7;
+  --color-paper: #f5f2eb;
+  --color-ink: #1f2421;
+  --color-line: #e4dfd3;
+  --color-muted: #66716b;
+  --color-sage: #7c9c84;
+  --color-terra: #e07a5f; /* accent: italic words, numbers, hovers */
+  --color-terra-ink: #c65d42; /* same hue, darker — for small text (contrast) */
+  --color-gold: #e9c46a; /* marquee ✦ separators, specks */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-fragment), ui-monospace, SFMono-Regular, monospace;
+  --font-serif: var(--font-instrument), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+html {
   scroll-behavior: smooth;
 }
 
-/* Canvas Styling */
-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.3;
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
 
-/* Optional utility helpers */
-.section {
-  position: relative;
-  z-index: 10;
-  padding: 4rem 2rem;
+::selection {
+  background: var(--color-terra);
+  color: var(--color-cream);
 }
 
-/* Scrollbar customization for vibes */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.3);
-  border-radius: 4px;
-}
-
-/* Smooth link hover */
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-a:hover {
-  color: #6366f1;
-}
-
-/* 💨 Floating Image Styling */
-.floating-image {
-  position: absolute;
-  width: 120px; /* Tweak size as needed */
-  opacity: 0.05;
-  z-index: 1;
-  animation: floatImage 14s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* ✨ Keyframes for subtle drift */
-@keyframes floatImage {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
+/* ───────── Motion primitives (used by Marquee, Hero badge, SVG art) ───────── */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
-  25% {
-    transform: translateY(-10px) translateX(5px) rotate(1deg);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(0) translateX(10px) rotate(-1deg);
+    transform: translateY(-8px);
   }
-  75% {
-    transform: translateY(10px) translateX(5px) rotate(0.5deg);
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8px, -12px);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(var(--s, 1)) rotate(0deg);
+  }
+  50% {
+    transform: scale(calc(var(--s, 1) * 1.06)) rotate(var(--r, 4deg));
+  }
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes dashmove {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+@keyframes orbit {
+  to {
+    offset-distance: 100%;
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
   }
   100% {
-    transform: translateY(0) translateX(0) rotate(0deg);
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-spin-slow {
+  animation: spin 26s linear infinite;
+}
+
+/* SVG art: every shape animates around its own centre */
+.art .svg-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.art .a-float {
+  animation: float 7s ease-in-out infinite;
+}
+.art .a-drift {
+  animation: drift 9s ease-in-out infinite;
+}
+.art .a-breathe {
+  animation: breathe 9s ease-in-out infinite;
+}
+.art .a-sway {
+  animation: sway 6s ease-in-out infinite;
+}
+.art .a-dash {
+  animation: dashmove 5s linear infinite;
+}
+.art .a-orbit {
+  animation: orbit 10s linear infinite;
+  offset-rotate: 0deg;
+}
+.art .a-blink {
+  animation: blink 3s ease-in-out infinite;
+}
+.art .a-wave {
+  animation: wave 1.8s ease-in-out infinite;
+}
+.art .a-ping {
+  animation: ping 2.4s ease-out infinite;
+}
+
+/* ───────── Respect reduced motion ───────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-spin-slow,
+  .art,
+  .art * {
+    animation: none !important;
   }
 }
