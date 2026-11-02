@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 import Pill from "@/components/ui/Pill";
 import { navLinks, site } from "@/data/site";
 
@@ -38,21 +39,25 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+          <ThemeToggle />
           <Pill href={site.resumeUrl} download={site.resumeFilename} className="!px-4 !py-2">
             Resume
           </Pill>
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="-mr-2 rounded-full p-2 text-ink focus-visible:outline-2 focus-visible:outline-terra md:hidden"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="-mr-2 flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="rounded-full p-2 text-ink focus-visible:outline-2 focus-visible:outline-terra"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {open ? (

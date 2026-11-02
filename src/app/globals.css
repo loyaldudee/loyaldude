@@ -1,16 +1,47 @@
 @import "tailwindcss";
 
-/* ───────── Design tokens ───────── */
+/* ───────── Design tokens ─────────
+   Raw palette lives in --c-* so it can be swapped per theme;
+   Tailwind's colour utilities (bg-cream, text-ink, …) read from it. */
+:root {
+  color-scheme: light;
+  --c-cream: #fdfbf7; /* page background */
+  --c-paper: #f5f2eb; /* cards, chips */
+  --c-ink: #1f2421; /* text, primary buttons */
+  --c-line: #e4dfd3; /* borders, rules */
+  --c-muted: #66716b;
+  --c-sage: #7c9c84;
+  --c-terra: #e07a5f; /* accent: italic words, numbers, hovers */
+  --c-terra-ink: #c65d42; /* same hue, darker — for small text (contrast) */
+  --c-gold: #e9c46a; /* marquee ✦ separators, specks */
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-cream: #141917;
+  --c-paper: #1d2320;
+  --c-ink: #f1ede4;
+  --c-line: #2c3430;
+  --c-muted: #9aa49e;
+  --c-sage: #8fb29b;
+  --c-terra: #e07a5f;
+  --c-terra-ink: #ec8d73;
+  --c-gold: #e9c46a;
+}
+
+/* `dark:` variant follows the data-theme attribute, not the OS setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
-  --color-cream: #fdfbf7;
-  --color-paper: #f5f2eb;
-  --color-ink: #1f2421;
-  --color-line: #e4dfd3;
-  --color-muted: #66716b;
-  --color-sage: #7c9c84;
-  --color-terra: #e07a5f; /* accent: italic words, numbers, hovers */
-  --color-terra-ink: #c65d42; /* same hue, darker — for small text (contrast) */
-  --color-gold: #e9c46a; /* marquee ✦ separators, specks */
+  --color-cream: var(--c-cream);
+  --color-paper: var(--c-paper);
+  --color-ink: var(--c-ink);
+  --color-line: var(--c-line);
+  --color-muted: var(--c-muted);
+  --color-sage: var(--c-sage);
+  --color-terra: var(--c-terra);
+  --color-terra-ink: var(--c-terra-ink);
+  --color-gold: var(--c-gold);
 }
 
 @theme inline {

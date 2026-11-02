@@ -36,14 +36,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FDFBF7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FDFBF7" },
+    { media: "(prefers-color-scheme: dark)", color: "#141917" },
+  ],
 };
+
+/** Runs before first paint so the saved / system theme is applied with no flash. */
+const themeInit = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}})();`;
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body
         className={`${bricolage.variable} ${fragment.variable} ${instrument.variable} bg-cream font-sans text-ink antialiased`}
       >

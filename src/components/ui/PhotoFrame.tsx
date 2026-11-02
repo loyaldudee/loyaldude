@@ -69,7 +69,7 @@ export default function PhotoFrame({ variant, priority }: PhotoFrameProps) {
         <div className="relative aspect-square overflow-hidden bg-ink/90">
           <Photo />
         </div>
-        <figcaption className="absolute inset-x-0 bottom-4 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <figcaption className="absolute inset-x-0 bottom-4 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#66716b]">
           {site.name.replace(" ", "_")} — {site.photoCaption}
         </figcaption>
       </div>
